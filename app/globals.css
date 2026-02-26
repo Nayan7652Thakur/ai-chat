@@ -24,3 +24,152 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Base tailwind typography plugin substitute if @tailwindcss/typography isn't available */
+.prose {
+  color: var(--foreground);
+  max-width: 65ch;
+}
+
+.prose-invert {
+  color: #fff;
+}
+
+.prose-purple {
+  color: #1e1e2e;
+}
+
+/* Custom Mesh Gradient Animations and UI Effects */
+@layer utilities {
+  .bg-mesh-gradient {
+    /* Create a continuous, smooth soft mesh gradient */
+    background: radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 0) 0, transparent 50%),
+      radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 0) 0, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 0) 0, transparent 50%);
+    background-color: #fce7f3;
+    /* pink-100 base */
+    background-image:
+      radial-gradient(at 40% 20%, hsla(280, 100%, 74%, 0.4) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.4) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.4) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 0.4) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 0.4) 0px, transparent 50%),
+      radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 0.4) 0px, transparent 50%),
+      radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 0.4) 0px, transparent 50%);
+    background-size: 200% 200%;
+    background-attachment: fixed;
+  }
+}
+
+@keyframes meshPan {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes messagePop {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-mesh-pan {
+  animation: meshPan 30s ease infinite;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-blob {
+  animation: blob 10s infinite alternate;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.message-entrance {
+  animation: messagePop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Scrollbar customization */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(168, 85, 247, 0.2);
+  /* purple-500 with opacity */
+  border-radius: 20px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(168, 85, 247, 0.5);
+}
